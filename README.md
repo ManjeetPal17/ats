@@ -40,8 +40,8 @@ npx serve .
 
 ## 👤 Author
 
-**Nandini C N**  
-📧 cnnandini09@gmail.com
+**Pal Manjeet VijayBahadur**  
+📧 palmanjit606@gmail.com
 
 ---
 
