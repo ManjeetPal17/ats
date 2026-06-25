@@ -331,14 +331,14 @@
           <div class="field"><label>Phone *</label><input type="tel" id="p-phone" placeholder="+91 9876543210" oninput="updatePreview()" /></div>
         </div>
         <div class="field-row">
-          <div class="field"><label>City, State</label><input type="text" id="p-location" placeholder="Bangalore, KA" oninput="updatePreview()" /></div>
+          <div class="field"><label>City, State</label><input type="text" id="p-location" list="dl-city-state" placeholder="Bangalore, KA" oninput="updatePreview()" /></div>
           <div class="field"><label>LinkedIn URL</label><input type="url" id="p-linkedin" placeholder="linkedin.com/in/you" oninput="updatePreview()" /></div>
         </div>
         <div class="field-row">
           <div class="field"><label>GitHub / Portfolio</label><input type="url" id="p-github" placeholder="github.com/you" oninput="updatePreview()" /></div>
           <div class="field"><label>Website (optional)</label><input type="url" id="p-website" placeholder="yoursite.com" oninput="updatePreview()" /></div>
         </div>
-        <div class="field"><label>Target Role / Job Title *</label><input type="text" id="p-title" placeholder="e.g. Full Stack Developer" oninput="updatePreview()" /></div>
+        <div class="field"><label>Target Role / Job Title *</label><input type="text" id="p-title" list="dl-job-titles" placeholder="e.g. Full Stack Developer" oninput="updatePreview()" /></div>
       </div>
 
       <!-- STEP 1: Work Experience OR Projects (Fresher) -->
@@ -375,10 +375,10 @@
             <span class="edu-toggle-icon" id="icon-edu10">▼</span>
           </div>
           <div class="edu-fixed-body open" id="edu10">
-            <div class="field"><label>Board</label><input type="text" id="e10-board" placeholder="CBSE / ICSE / State Board" oninput="updatePreview()" /></div>
+            <div class="field"><label>Board</label><input type="text" id="e10-board" list="dl-boards" placeholder="CBSE / ICSE / State Board" oninput="updatePreview()" /></div>
             <div class="field"><label>School Name</label><input type="text" id="e10-school" placeholder="XYZ High School" oninput="updatePreview()" /></div>
             <div class="field-row">
-              <div class="field"><label>Year of Passing</label><input type="text" id="e10-year" placeholder="2018" oninput="updatePreview()" /></div>
+              <div class="field"><label>Year of Passing</label><input type="text" id="e10-year" list="dl-years" placeholder="2018" oninput="updatePreview()" /></div>
               <div class="field"><label>Marks / Percentage / Grade</label><input type="text" id="e10-marks" placeholder="92% or A1 or 9.4 CGPA" oninput="updatePreview()" /></div>
             </div>
           </div>
@@ -391,11 +391,11 @@
             <span class="edu-toggle-icon" id="icon-edu12">▼</span>
           </div>
           <div class="edu-fixed-body open" id="edu12">
-            <div class="field"><label>Board</label><input type="text" id="e12-board" placeholder="CBSE / PUC / State Board" oninput="updatePreview()" /></div>
+            <div class="field"><label>Board</label><input type="text" id="e12-board" list="dl-boards" placeholder="CBSE / PUC / State Board" oninput="updatePreview()" /></div>
             <div class="field"><label>School / College Name</label><input type="text" id="e12-school" placeholder="ABC PU College" oninput="updatePreview()" /></div>
-            <div class="field"><label>Stream</label><input type="text" id="e12-stream" placeholder="Science (PCM) / Commerce / Arts" oninput="updatePreview()" /></div>
+            <div class="field"><label>Stream</label><input type="text" id="e12-stream" list="dl-streams" placeholder="Science (PCM) / Commerce / Arts" oninput="updatePreview()" /></div>
             <div class="field-row">
-              <div class="field"><label>Year of Passing</label><input type="text" id="e12-year" placeholder="2020" oninput="updatePreview()" /></div>
+              <div class="field"><label>Year of Passing</label><input type="text" id="e12-year" list="dl-years" placeholder="2020" oninput="updatePreview()" /></div>
               <div class="field"><label>Marks / Percentage / Grade</label><input type="text" id="e12-marks" placeholder="88% or 8.8 CGPA" oninput="updatePreview()" /></div>
             </div>
           </div>
@@ -408,12 +408,12 @@
             <span class="edu-toggle-icon" id="icon-edoug">▼</span>
           </div>
           <div class="edu-fixed-body open" id="edoug">
-            <div class="field"><label>Degree Name</label><input type="text" id="eug-degree" placeholder="B.Tech / BCA / B.Sc / BA / B.Com" oninput="updatePreview()" /></div>
-            <div class="field"><label>Specialization / Branch</label><input type="text" id="eug-field" placeholder="Computer Science & Engineering" oninput="updatePreview()" /></div>
-            <div class="field"><label>University / College</label><input type="text" id="eug-college" placeholder="Visvesvaraya Technological University" oninput="updatePreview()" /></div>
+            <div class="field"><label>Degree Name</label><input type="text" id="eug-degree" list="dl-ug-degrees" placeholder="B.Tech / BCA / B.Sc / BA / B.Com" oninput="updatePreview()" /></div>
+            <div class="field"><label>Specialization / Branch</label><input type="text" id="eug-field" list="dl-specializations" placeholder="Computer Science & Engineering" oninput="updatePreview()" /></div>
+            <div class="field"><label>University / College</label><input type="text" id="eug-college" list="dl-universities" placeholder="Visvesvaraya Technological University" oninput="updatePreview()" /></div>
             <div class="field-row">
-              <div class="field"><label>Start Year</label><input type="text" id="eug-start" placeholder="2020" oninput="updatePreview()" /></div>
-              <div class="field"><label>End Year (or Expected)</label><input type="text" id="eug-end" placeholder="2024" oninput="updatePreview()" /></div>
+              <div class="field"><label>Start Year</label><input type="text" id="eug-start" list="dl-years" placeholder="2020" oninput="updatePreview()" /></div>
+              <div class="field"><label>End Year (or Expected)</label><input type="text" id="eug-end" list="dl-years-exp" placeholder="2024" oninput="updatePreview()" /></div>
             </div>
             <div class="field"><label>CGPA / Percentage</label><input type="text" id="eug-gpa" placeholder="8.2 / 10 or 78%" oninput="updatePreview()" /></div>
           </div>
@@ -434,12 +434,12 @@
               <span class="edu-toggle-icon" id="icon-edupg-inner">▼</span>
             </div>
             <div class="edu-fixed-body open" id="edupg-inner">
-              <div class="field"><label>Degree Name</label><input type="text" id="epg-degree" placeholder="M.Tech / MCA / MBA / M.Sc" oninput="updatePreview()" /></div>
-              <div class="field"><label>Specialization</label><input type="text" id="epg-field" placeholder="Data Science / AI / Finance" oninput="updatePreview()" /></div>
-              <div class="field"><label>University / College</label><input type="text" id="epg-college" placeholder="IIT / NIT / Private University" oninput="updatePreview()" /></div>
+              <div class="field"><label>Degree Name</label><input type="text" id="epg-degree" list="dl-pg-degrees" placeholder="M.Tech / MCA / MBA / M.Sc" oninput="updatePreview()" /></div>
+              <div class="field"><label>Specialization</label><input type="text" id="epg-field" list="dl-specializations" placeholder="Data Science / AI / Finance" oninput="updatePreview()" /></div>
+              <div class="field"><label>University / College</label><input type="text" id="epg-college" list="dl-universities" placeholder="IIT / NIT / Private University" oninput="updatePreview()" /></div>
               <div class="field-row">
-                <div class="field"><label>Start Year</label><input type="text" id="epg-start" placeholder="2024" oninput="updatePreview()" /></div>
-                <div class="field"><label>End Year</label><input type="text" id="epg-end" placeholder="2026" oninput="updatePreview()" /></div>
+                <div class="field"><label>Start Year</label><input type="text" id="epg-start" list="dl-years" placeholder="2024" oninput="updatePreview()" /></div>
+                <div class="field"><label>End Year</label><input type="text" id="epg-end" list="dl-years-exp" placeholder="2026" oninput="updatePreview()" /></div>
               </div>
               <div class="field"><label>CGPA / Percentage</label><input type="text" id="epg-gpa" placeholder="8.5 / 10 or 82%" oninput="updatePreview()" /></div>
             </div>
@@ -773,14 +773,14 @@ function renderExperienceList() {
         <button class="btn-remove" onclick="removeExperience(${exp.id})">✕</button>
       </div>
       <div class="field-row">
-        <div class="field"><label>Job Title</label><input type="text" value="${esc(exp.title)}" placeholder="Software Engineer" oninput="experiences.find(e=>e.id===${exp.id}).title=this.value;updatePreview()" /></div>
-        <div class="field"><label>Company</label><input type="text" value="${esc(exp.company)}" placeholder="Google" oninput="experiences.find(e=>e.id===${exp.id}).company=this.value;updatePreview()" /></div>
+        <div class="field"><label>Job Title</label><input type="text" list="dl-job-titles" value="${esc(exp.title)}" placeholder="Software Engineer" oninput="experiences.find(e=>e.id===${exp.id}).title=this.value;updatePreview()" /></div>
+        <div class="field"><label>Company</label><input type="text" list="dl-companies" value="${esc(exp.company)}" placeholder="Google" oninput="experiences.find(e=>e.id===${exp.id}).company=this.value;updatePreview()" /></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Start Date</label><input type="text" value="${esc(exp.startDate)}" placeholder="Jan 2022" oninput="experiences.find(e=>e.id===${exp.id}).startDate=this.value;updatePreview()" /></div>
-        <div class="field"><label>End Date</label><input type="text" value="${esc(exp.endDate)}" placeholder="Present" oninput="experiences.find(e=>e.id===${exp.id}).endDate=this.value;updatePreview()" /></div>
+        <div class="field"><label>Start Date</label><input type="text" list="dl-dates" value="${esc(exp.startDate)}" placeholder="Jan 2022" oninput="experiences.find(e=>e.id===${exp.id}).startDate=this.value;updatePreview()" /></div>
+        <div class="field"><label>End Date</label><input type="text" list="dl-dates-end" value="${esc(exp.endDate)}" placeholder="Present" oninput="experiences.find(e=>e.id===${exp.id}).endDate=this.value;updatePreview()" /></div>
       </div>
-      <div class="field"><label>Location</label><input type="text" value="${esc(exp.location)}" placeholder="Bangalore, India (Remote)" oninput="experiences.find(e=>e.id===${exp.id}).location=this.value;updatePreview()" /></div>
+      <div class="field"><label>Location</label><input type="text" list="dl-city-state" value="${esc(exp.location)}" placeholder="Bangalore, India (Remote)" oninput="experiences.find(e=>e.id===${exp.id}).location=this.value;updatePreview()" /></div>
       <div class="field"><label>Achievements (one per line, start with •)</label><textarea placeholder="• Built REST APIs serving 1M+ requests/day&#10;• Reduced load time by 35%&#10;• Led a team of 4 engineers" oninput="experiences.find(e=>e.id===${exp.id}).bullets=this.value;updatePreview()">${esc(exp.bullets)}</textarea></div>
     </div>
   `).join('');
@@ -1076,6 +1076,236 @@ function esc(s) {
 setProfileType('fresher'); // Default: fresher
 updatePreview();
 document.getElementById('btn-prev').style.opacity = '0.4';
+
+/* ============================================================
+   POPULATE DATALISTS
+   ============================================================ */
+(function buildDataLists() {
+  // Years (past)
+  const yearsEl = document.getElementById('dl-years');
+  for (let y = 2030; y >= 1990; y--) {
+    const o = document.createElement('option'); o.value = String(y); yearsEl.appendChild(o);
+  }
+  // Years (expected / future)
+  const yearsExpEl = document.getElementById('dl-years-exp');
+  ['Pursuing','Present','Expected 2027','Expected 2026','Expected 2025','Expected 2024'].forEach(v => {
+    const o = document.createElement('option'); o.value = v; yearsExpEl.appendChild(o);
+  });
+  for (let y = 2030; y >= 1990; y--) {
+    const o = document.createElement('option'); o.value = String(y); yearsExpEl.appendChild(o);
+  }
+  // Month-Year dates
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const datesEl = document.getElementById('dl-dates');
+  const datesEndEl = document.getElementById('dl-dates-end');
+  const oPresent = document.createElement('option'); oPresent.value = 'Present'; datesEndEl.appendChild(oPresent);
+  for (let y = 2027; y >= 2010; y--) {
+    months.forEach(m => {
+      const v = m + ' ' + y;
+      const o1 = document.createElement('option'); o1.value = v; datesEl.appendChild(o1);
+      const o2 = document.createElement('option'); o2.value = v; datesEndEl.appendChild(o2);
+    });
+  }
+})();
 </script>
+
+<!-- ===== ALL DATALISTS ===== -->
+<!-- Job Titles -->
+<datalist id="dl-job-titles">
+  <option value="Software Engineer"><option value="Senior Software Engineer"><option value="Software Developer">
+  <option value="Full Stack Developer"><option value="Frontend Developer"><option value="Backend Developer">
+  <option value="React Developer"><option value="Angular Developer"><option value="Vue.js Developer">
+  <option value="Node.js Developer"><option value="Java Developer"><option value="Python Developer">
+  <option value=".NET Developer"><option value="PHP Developer"><option value="Android Developer">
+  <option value="iOS Developer"><option value="Mobile App Developer"><option value="Flutter Developer">
+  <option value="React Native Developer"><option value="DevOps Engineer"><option value="Cloud Engineer">
+  <option value="AWS Cloud Engineer"><option value="Site Reliability Engineer (SRE)">
+  <option value="Data Scientist"><option value="Data Analyst"><option value="Data Engineer">
+  <option value="Machine Learning Engineer"><option value="AI Engineer"><option value="NLP Engineer">
+  <option value="Business Intelligence Analyst"><option value="Database Administrator (DBA)">
+  <option value="UI/UX Designer"><option value="Product Designer"><option value="Graphic Designer">
+  <option value="QA Engineer"><option value="Test Engineer"><option value="Automation Test Engineer">
+  <option value="Manual Tester"><option value="Cybersecurity Analyst"><option value="Network Engineer">
+  <option value="System Administrator"><option value="IT Support Engineer"><option value="Technical Writer">
+  <option value="Product Manager"><option value="Business Analyst"><option value="Project Manager">
+  <option value="Scrum Master"><option value="Agile Coach"><option value="IT Consultant">
+  <option value="Sales Executive"><option value="Marketing Executive"><option value="Digital Marketing Specialist">
+  <option value="SEO Specialist"><option value="Content Writer"><option value="HR Executive">
+  <option value="Financial Analyst"><option value="Accountant"><option value="Operations Manager">
+  <option value="Mechanical Engineer"><option value="Civil Engineer"><option value="Electrical Engineer">
+  <option value="Electronics Engineer"><option value="Embedded Systems Engineer"><option value="VLSI Design Engineer">
+  <option value="Internship - Software Developer"><option value="Graduate Trainee">
+  <option value="Junior Developer"><option value="Fresher - Software Engineer">
+</datalist>
+
+<!-- Indian Cities + States -->
+<datalist id="dl-city-state">
+  <option value="Bangalore, Karnataka"><option value="Mumbai, Maharashtra"><option value="Chennai, Tamil Nadu">
+  <option value="Hyderabad, Telangana"><option value="Delhi, Delhi"><option value="Kolkata, West Bengal">
+  <option value="Pune, Maharashtra"><option value="Ahmedabad, Gujarat"><option value="Jaipur, Rajasthan">
+  <option value="Surat, Gujarat"><option value="Lucknow, Uttar Pradesh"><option value="Kanpur, Uttar Pradesh">
+  <option value="Nagpur, Maharashtra"><option value="Indore, Madhya Pradesh"><option value="Thane, Maharashtra">
+  <option value="Bhopal, Madhya Pradesh"><option value="Visakhapatnam, Andhra Pradesh">
+  <option value="Patna, Bihar"><option value="Vadodara, Gujarat"><option value="Ghaziabad, Uttar Pradesh">
+  <option value="Ludhiana, Punjab"><option value="Agra, Uttar Pradesh"><option value="Nashik, Maharashtra">
+  <option value="Faridabad, Haryana"><option value="Meerut, Uttar Pradesh"><option value="Rajkot, Gujarat">
+  <option value="Varanasi, Uttar Pradesh"><option value="Coimbatore, Tamil Nadu"><option value="Madurai, Tamil Nadu">
+  <option value="Vijayawada, Andhra Pradesh"><option value="Jodhpur, Rajasthan"><option value="Raipur, Chhattisgarh">
+  <option value="Kota, Rajasthan"><option value="Chandigarh, Chandigarh"><option value="Guwahati, Assam">
+  <option value="Noida, Uttar Pradesh"><option value="Gurugram, Haryana"><option value="Navi Mumbai, Maharashtra">
+  <option value="Mysore, Karnataka"><option value="Mangalore, Karnataka"><option value="Kochi, Kerala">
+  <option value="Thiruvananthapuram, Kerala"><option value="Bhubaneswar, Odisha"><option value="Amritsar, Punjab">
+  <option value="Hubli, Karnataka"><option value="Belgaum, Karnataka"><option value="Ranchi, Jharkhand">
+  <option value="Jabalpur, Madhya Pradesh"><option value="Gwalior, Madhya Pradesh">
+  <option value="Aurangabad, Maharashtra"><option value="Allahabad, Uttar Pradesh">
+  <option value="Srinagar, Jammu &amp; Kashmir"><option value="Dehradun, Uttarakhand">
+  <option value="Bhubaneswar, Odisha"><option value="Solapur, Maharashtra">
+  <option value="Remote (Work from Home)"><option value="Pan India">
+</datalist>
+
+<!-- Education Boards -->
+<datalist id="dl-boards">
+  <option value="CBSE"><option value="ICSE"><option value="ISC"><option value="IGCSE">
+  <option value="IB (International Baccalaureate)">
+  <option value="Karnataka State Board (KSEEB)"><option value="Maharashtra State Board (MSBSHSE)">
+  <option value="Tamil Nadu State Board (TNBSE)"><option value="Andhra Pradesh Board (BSEAP)">
+  <option value="Telangana Board (BSETS)"><option value="Rajasthan Board (RBSE)">
+  <option value="Uttar Pradesh Board (UPMSP)"><option value="West Bengal Board (WBBSE)">
+  <option value="Bihar Board (BSEB)"><option value="Madhya Pradesh Board (MPBSE)">
+  <option value="Gujarat Board (GSEB)"><option value="Punjab Board (PSEB)">
+  <option value="Kerala Board (SCERT Kerala)"><option value="Odisha Board (BSE Odisha)">
+  <option value="Haryana Board (HBSE)"><option value="J&amp;K Board (JKBOSE)">
+  <option value="Assam Board (SEBA)"><option value="Chhattisgarh Board (CGBSE)">
+  <option value="Jharkhand Board (JAC)"><option value="Delhi Board (CBSE)">
+  <option value="PUC (Pre-University Course)">
+</datalist>
+
+<!-- Streams -->
+<datalist id="dl-streams">
+  <option value="Science — PCM (Physics, Chemistry, Maths)">
+  <option value="Science — PCB (Physics, Chemistry, Biology)">
+  <option value="Science — PCMB (Physics, Chemistry, Maths, Biology)">
+  <option value="Commerce (with Maths)"><option value="Commerce (without Maths)">
+  <option value="Arts / Humanities"><option value="Vocational">
+  <option value="Computer Science"><option value="IT (Information Technology)">
+</datalist>
+
+<!-- UG Degrees -->
+<datalist id="dl-ug-degrees">
+  <option value="B.Tech (Bachelor of Technology)"><option value="B.E. (Bachelor of Engineering)">
+  <option value="BCA (Bachelor of Computer Applications)"><option value="B.Sc (Bachelor of Science)">
+  <option value="B.Sc (Hons)"><option value="B.Com (Bachelor of Commerce)">
+  <option value="B.Com (Hons)"><option value="BA (Bachelor of Arts)">
+  <option value="BBA (Bachelor of Business Administration)">
+  <option value="B.Arch (Bachelor of Architecture)">
+  <option value="B.Des (Bachelor of Design)"><option value="B.Pharm (Bachelor of Pharmacy)">
+  <option value="B.Ed (Bachelor of Education)"><option value="LLB (Bachelor of Laws)">
+  <option value="MBBS"><option value="BDS (Bachelor of Dental Surgery)">
+  <option value="B.HM (Hotel Management)"><option value="BPT (Physiotherapy)">
+  <option value="BSW (Social Work)"><option value="B.Voc"><option value="B.Plan">
+</datalist>
+
+<!-- PG Degrees -->
+<datalist id="dl-pg-degrees">
+  <option value="M.Tech (Master of Technology)"><option value="M.E. (Master of Engineering)">
+  <option value="MCA (Master of Computer Applications)"><option value="M.Sc (Master of Science)">
+  <option value="M.Com (Master of Commerce)"><option value="MA (Master of Arts)">
+  <option value="MBA (Master of Business Administration)">
+  <option value="M.Arch (Master of Architecture)">
+  <option value="M.Des (Master of Design)"><option value="M.Pharm (Master of Pharmacy)">
+  <option value="M.Ed (Master of Education)"><option value="LLM (Master of Laws)">
+  <option value="MD (Doctor of Medicine)"><option value="MS (Master of Surgery)">
+  <option value="MPH (Master of Public Health)"><option value="MFA (Master of Fine Arts)">
+  <option value="MSW (Master of Social Work)"><option value="PGDM (Post Graduate Diploma in Management)">
+  <option value="M.Phil"><option value="Ph.D (Doctorate)">
+</datalist>
+
+<!-- Specializations -->
+<datalist id="dl-specializations">
+  <option value="Computer Science &amp; Engineering"><option value="Information Technology">
+  <option value="Electronics &amp; Communication Engineering"><option value="Electrical &amp; Electronics Engineering">
+  <option value="Mechanical Engineering"><option value="Civil Engineering">
+  <option value="Chemical Engineering"><option value="Aerospace Engineering">
+  <option value="Biotechnology"><option value="Bioinformatics">
+  <option value="Data Science"><option value="Artificial Intelligence">
+  <option value="Machine Learning"><option value="Cyber Security">
+  <option value="Cloud Computing"><option value="Software Engineering">
+  <option value="Web Development"><option value="Mobile App Development">
+  <option value="Embedded Systems"><option value="VLSI Design">
+  <option value="Robotics &amp; Automation"><option value="Environmental Engineering">
+  <option value="Industrial Engineering"><option value="Finance">
+  <option value="Marketing"><option value="Human Resources Management">
+  <option value="Operations Management"><option value="Business Analytics">
+  <option value="International Business"><option value="Supply Chain Management">
+  <option value="Healthcare Management"><option value="Accounting &amp; Finance">
+  <option value="Economics"><option value="Statistics"><option value="Mathematics">
+  <option value="Physics"><option value="Chemistry"><option value="Zoology"><option value="Botany">
+  <option value="English Literature"><option value="History"><option value="Political Science">
+  <option value="Psychology"><option value="Sociology"><option value="Commerce">
+  <option value="Banking &amp; Finance"><option value="Media Studies"><option value="Journalism">
+  <option value="Fashion Designing"><option value="Interior Design"><option value="Graphic Design">
+</datalist>
+
+<!-- Universities -->
+<datalist id="dl-universities">
+  <option value="IIT Bombay"><option value="IIT Delhi"><option value="IIT Madras">
+  <option value="IIT Kharagpur"><option value="IIT Kanpur"><option value="IIT Roorkee">
+  <option value="IIT Guwahati"><option value="IIT Hyderabad"><option value="IIT BHU">
+  <option value="IISc Bangalore"><option value="NIT Trichy"><option value="NIT Surathkal">
+  <option value="NIT Warangal"><option value="NIT Calicut"><option value="NIT Rourkela">
+  <option value="VTU (Visvesvaraya Technological University)">
+  <option value="Anna University"><option value="JNTU Hyderabad"><option value="JNTU Kakinada">
+  <option value="Pune University (SPPU — Savitribai Phule Pune University)">
+  <option value="Mumbai University"><option value="Delhi University (DU)">
+  <option value="Calcutta University"><option value="Madras University">
+  <option value="Osmania University"><option value="Andhra University">
+  <option value="Bangalore University"><option value="Mysore University">
+  <option value="BITS Pilani"><option value="BITS Goa"><option value="BITS Hyderabad">
+  <option value="Amity University"><option value="Manipal University">
+  <option value="SRM University"><option value="Vellore Institute of Technology (VIT)">
+  <option value="Lovely Professional University (LPU)">
+  <option value="Christ University"><option value="Symbiosis International University">
+  <option value="Jadavpur University"><option value="Kalyani University">
+  <option value="University of Hyderabad"><option value="University of Kerala">
+  <option value="IGNOU (Indira Gandhi National Open University)">
+  <option value="Pondicherry University"><option value="Bharathidasan University">
+  <option value="PSG College of Technology"><option value="Coimbatore Institute of Technology">
+</datalist>
+
+<!-- Companies -->
+<datalist id="dl-companies">
+  <option value="TCS (Tata Consultancy Services)"><option value="Infosys"><option value="Wipro">
+  <option value="HCL Technologies"><option value="Tech Mahindra"><option value="Accenture">
+  <option value="Cognizant"><option value="Capgemini"><option value="IBM India">
+  <option value="Mphasis"><option value="Hexaware"><option value="Mindtree">
+  <option value="Persistent Systems"><option value="L&amp;T Technology Services">
+  <option value="Birlasoft"><option value="Zensar Technologies">
+  <option value="Cyient"><option value="KPIT Technologies"><option value="Coforge">
+  <option value="Mastech Digital"><option value="Oracle India"><option value="SAP India">
+  <option value="Google India"><option value="Microsoft India"><option value="Amazon India">
+  <option value="Meta (Facebook) India"><option value="Apple India">
+  <option value="Adobe India"><option value="Salesforce India">
+  <option value="Deloitte India"><option value="PwC India"><option value="EY India"><option value="KPMG India">
+  <option value="McKinsey India"><option value="BCG India">
+  <option value="JP Morgan"><option value="Goldman Sachs"><option value="Citibank India">
+  <option value="HDFC Bank"><option value="ICICI Bank"><option value="Axis Bank"><option value="SBI">
+  <option value="Reliance Industries"><option value="Tata Group"><option value="Mahindra">
+  <option value="Bajaj Auto"><option value="Maruti Suzuki"><option value="Hero MotoCorp">
+  <option value="Flipkart"><option value="Swiggy"><option value="Zomato"><option value="Ola">
+  <option value="Paytm"><option value="CRED"><option value="Razorpay"><option value="Freshworks">
+  <option value="Zoho Corporation"><option value="Byju's"><option value="Unacademy">
+  <option value="MakeMyTrip"><option value="Info Edge (Naukri.com)">
+  <option value="PharmEasy"><option value="PolicyBazaar"><option value="Ola Electric">
+  <option value="Meesho"><option value="PhonePe"><option value="Groww"><option value="Zerodha">
+  <option value="ISRO"><option value="DRDO"><option value="BHEL"><option value="NTPC"><option value="ONGC">
+  <option value="Startup (Self-employed)">
+</datalist>
+
+<!-- Empty datalists populated by JS -->
+<datalist id="dl-years"></datalist>
+<datalist id="dl-years-exp"></datalist>
+<datalist id="dl-dates"></datalist>
+<datalist id="dl-dates-end"></datalist>
+
 </body>
 </html>
