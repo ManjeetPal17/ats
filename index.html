@@ -237,6 +237,36 @@
     #toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--bg-card2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 20px; font-size: 0.85rem; font-weight: 500; color: var(--text-primary); box-shadow: var(--shadow); transition: transform 0.3s ease, opacity 0.3s ease; opacity: 0; z-index: 999; white-space: nowrap; }
     #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
+    /* ===== VALIDATION STYLES ===== */
+    .field-error input, .field-error textarea, .field-error select {
+      border-color: var(--red) !important;
+      box-shadow: 0 0 0 3px rgba(255,95,126,0.18) !important;
+      animation: shake 0.35s ease;
+    }
+    @keyframes shake {
+      0%,100%{transform:translateX(0)}
+      20%{transform:translateX(-5px)}
+      40%{transform:translateX(5px)}
+      60%{transform:translateX(-4px)}
+      80%{transform:translateX(4px)}
+    }
+    .field-error-msg {
+      font-size: 0.7rem; color: var(--red); font-weight: 600;
+      margin-top: 3px; display: flex; align-items: center; gap: 4px;
+    }
+    .field label .req-star { color: var(--red); margin-left: 2px; }
+    /* Validation banner */
+    .validation-banner {
+      margin: 0.5rem 1.25rem 0; padding: 0.65rem 0.85rem;
+      background: rgba(255,95,126,0.10); border: 1px solid rgba(255,95,126,0.35);
+      border-radius: var(--radius-sm); display: none;
+    }
+    .validation-banner.show { display: block; animation: fadeIn 0.2s ease; }
+    .vb-title { font-size: 0.75rem; font-weight: 700; color: var(--red); margin-bottom: 4px; }
+    .vb-list { list-style: none; padding: 0; }
+    .vb-list li { font-size: 0.72rem; color: #ff8fa3; padding: 2px 0; }
+    .vb-list li::before { content: '⚠ '; }
+
     /* FOOTER */
     footer { position: relative; z-index: 1; border-top: 1px solid var(--border); background: var(--bg-secondary); padding: 2rem 1.5rem; text-align: center; }
     .footer-inner { max-width: 800px; margin: 0 auto; }
@@ -325,10 +355,10 @@
         </div>
 
         <div class="sub-section-title">Contact Details</div>
-        <div class="field"><label>Full Name *</label><input type="text" id="p-name" placeholder="e.g. Nandini CN" oninput="updatePreview()" /></div>
+        <div class="field"><label>Full Name <span class="req-star">*</span></label><input type="text" id="p-name" placeholder="e.g. Nandini CN" oninput="clearErr(this);updatePreview()" /></div>
         <div class="field-row">
-          <div class="field"><label>Email *</label><input type="email" id="p-email" placeholder="you@email.com" oninput="updatePreview()" /></div>
-          <div class="field"><label>Phone *</label><input type="tel" id="p-phone" placeholder="+91 9876543210" oninput="updatePreview()" /></div>
+          <div class="field"><label>Email <span class="req-star">*</span></label><input type="email" id="p-email" placeholder="you@email.com" oninput="clearErr(this);updatePreview()" /></div>
+          <div class="field"><label>Phone <span class="req-star">*</span></label><input type="tel" id="p-phone" placeholder="+91 9876543210" oninput="clearErr(this);updatePreview()" /></div>
         </div>
         <div class="field-row">
           <div class="field"><label>City, State</label><input type="text" id="p-location" list="dl-city-state" placeholder="Bangalore, KA" oninput="updatePreview()" /></div>
@@ -338,7 +368,7 @@
           <div class="field"><label>GitHub / Portfolio</label><input type="url" id="p-github" placeholder="github.com/you" oninput="updatePreview()" /></div>
           <div class="field"><label>Website (optional)</label><input type="url" id="p-website" placeholder="yoursite.com" oninput="updatePreview()" /></div>
         </div>
-        <div class="field"><label>Target Role / Job Title *</label><input type="text" id="p-title" list="dl-job-titles" placeholder="e.g. Full Stack Developer" oninput="updatePreview()" /></div>
+        <div class="field"><label>Target Role / Job Title <span class="req-star">*</span></label><input type="text" id="p-title" list="dl-job-titles" placeholder="e.g. Full Stack Developer" oninput="clearErr(this);updatePreview()" /></div>
       </div>
 
       <!-- STEP 1: Work Experience OR Projects (Fresher) -->
@@ -475,8 +505,8 @@
         <div class="section-title" id="summary-title">Professional Summary</div>
         <div class="section-desc" id="summary-desc">3–4 sentences tailored to the job. Mention your degree, skills, and career goal.</div>
         <div class="field">
-          <label>Summary *</label>
-          <textarea id="p-summary" rows="6" placeholder="Motivated Computer Science graduate from VTU with strong foundation in Java, Python, and React.js. Built 5+ academic and personal projects including an e-commerce app and ML-based classifier. Eager to contribute to a dynamic team as a Software Developer and grow through hands-on experience." oninput="updatePreview()"></textarea>
+          <label id="summary-label">Career Objective <span class="req-star">*</span></label>
+          <textarea id="p-summary" rows="6" placeholder="Motivated Computer Science graduate from VTU with strong foundation in Java, Python, and React.js. Built 5+ academic and personal projects including an e-commerce app and ML-based classifier. Eager to contribute to a dynamic team as a Software Developer and grow through hands-on experience." oninput="clearErr(this);updatePreview()"></textarea>
         </div>
         <div class="tip-box">
           <div class="tip-box-title">💡 ATS Tip</div>
@@ -491,6 +521,9 @@
         <div id="cert-list"></div>
         <button class="btn-add-entry" onclick="addCertification()">+ Add Certification / Achievement</button>
       </div>
+
+      <!-- VALIDATION BANNER (injected by JS) -->
+      <div id="validation-banner" class="validation-banner"></div>
 
       <!-- ATS Score -->
       <div class="ats-bar-wrap">
@@ -697,6 +730,15 @@ function setProfileType(type) {
 function changeStep(dir) {
   const newStep = currentStep + dir;
   if (newStep < 0 || newStep >= totalSteps) return;
+  // Only validate when moving forward
+  if (dir > 0) {
+    const errors = validateStep(currentStep);
+    if (errors.length > 0) {
+      showValidationBanner(errors);
+      return; // block navigation
+    }
+  }
+  clearAllErrors();
   document.getElementById(`step-${currentStep}`).classList.remove('active');
   document.querySelectorAll('.step-tab')[currentStep].classList.remove('active');
   document.querySelectorAll('.step-tab')[currentStep].classList.add('done');
@@ -708,6 +750,247 @@ function changeStep(dir) {
   document.getElementById('btn-prev').style.opacity = currentStep === 0 ? '0.4' : '1';
   document.getElementById('btn-next').textContent = currentStep === totalSteps - 1 ? '✓ Done' : 'Next →';
   updateATSScore();
+}
+
+/* ============================================================
+   VALIDATION
+   ============================================================ */
+function validateStep(step) {
+  const errors = [];
+
+  if (step === 0) {
+    // Personal Info — same for both
+    errors.push(...requireField('p-name', 'Full Name is required'));
+    errors.push(...requireField('p-email', 'Email address is required'));
+    errors.push(...requireField('p-phone', 'Phone number is required'));
+    errors.push(...requireField('p-title', 'Target Role / Job Title is required'));
+    // Email format check
+    const email = document.getElementById('p-email').value.trim();
+    if (email && !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+      markError('p-email', 'Enter a valid email address (e.g. you@email.com)');
+      errors.push('Email format is invalid');
+    }
+  }
+
+  if (step === 1) {
+    if (profileType === 'experienced') {
+      if (experiences.length === 0) {
+        errors.push('Add at least one Work Experience entry');
+        highlightAddBtn('work-section');
+      } else {
+        experiences.forEach((exp, i) => {
+          if (!exp.title.trim()) errors.push(`Experience ${i+1}: Job Title is required`);
+          if (!exp.company.trim()) errors.push(`Experience ${i+1}: Company name is required`);
+          if (!exp.startDate.trim()) errors.push(`Experience ${i+1}: Start Date is required`);
+          if (!exp.bullets.trim()) errors.push(`Experience ${i+1}: Add at least one achievement/responsibility`);
+        });
+        // Re-render to show error highlights inside dynamic cards
+        renderExperienceListWithErrors();
+      }
+    } else {
+      // Fresher
+      if (projects.length === 0) {
+        errors.push('Add at least one Project or Internship');
+        highlightAddBtn('fresher-section');
+      } else {
+        projects.forEach((p, i) => {
+          if (!p.name.trim()) errors.push(`Project ${i+1}: Project/Internship title is required`);
+          if (!p.tech.trim()) errors.push(`Project ${i+1}: Tech Stack / Tools Used is required`);
+          if (!p.desc.trim()) errors.push(`Project ${i+1}: Add at least one description line`);
+        });
+        renderProjectListWithErrors();
+      }
+    }
+  }
+
+  if (step === 2) {
+    // Education — Bachelor's is mandatory for all
+    if (!document.getElementById('eug-degree').value.trim()) {
+      markError('eug-degree', 'Degree name is required (e.g. B.Tech, BCA)');
+      // Auto-expand the card
+      const body = document.getElementById('edoug');
+      if (!body.classList.contains('open')) toggleEduCard('edoug');
+      errors.push('Bachelor\'s Degree: Degree name is required');
+    }
+    if (!document.getElementById('eug-college').value.trim()) {
+      markError('eug-college', 'University / College name is required');
+      const body = document.getElementById('edoug');
+      if (!body.classList.contains('open')) toggleEduCard('edoug');
+      errors.push('Bachelor\'s Degree: University / College is required');
+    }
+    if (!document.getElementById('eug-end').value.trim()) {
+      markError('eug-end', 'End year is required (e.g. 2024 or Pursuing)');
+      errors.push('Bachelor\'s Degree: End year / Pursuing is required');
+    }
+    // For experienced: also warn if 10th/12th missing
+    if (profileType === 'experienced') {
+      if (!document.getElementById('e10-year').value.trim() && !document.getElementById('e10-school').value.trim()) {
+        // soft warning — not blocking
+      }
+    }
+    // Fresher: 10th and 12th marks are recommended
+    if (profileType === 'fresher') {
+      if (!document.getElementById('e12-year').value.trim()) {
+        markError('e12-year', 'Year of passing 12th is recommended');
+        errors.push('12th / PUC: Year of passing is required');
+      }
+    }
+  }
+
+  if (step === 3) {
+    const minSkills = profileType === 'experienced' ? 4 : 3;
+    if (skills.length < minSkills) {
+      document.getElementById('skill-input').parentElement.classList.add('field-error');
+      appendErrorMsg('skill-input', `Add at least ${minSkills} skills (you have ${skills.length})`);
+      errors.push(`Add at least ${minSkills} skills`);
+    }
+  }
+
+  if (step === 4) {
+    const summary = document.getElementById('p-summary').value.trim();
+    if (!summary) {
+      markError('p-summary', profileType === 'fresher' ? 'Career Objective is required' : 'Professional Summary is required');
+      errors.push(profileType === 'fresher' ? 'Career Objective is required' : 'Professional Summary is required');
+    } else if (summary.length < 80) {
+      markError('p-summary', `Too short — write at least 80 characters (currently ${summary.length})`);
+      errors.push('Summary is too short — add more detail');
+    }
+  }
+
+  if (step === 5) {
+    // Certifications optional — no blocking validation
+    // But show a tip if none added
+    if (certifications.length === 0) {
+      // Non-blocking: just remind
+      showToast('💡 Tip: Adding certifications boosts your ATS score!');
+    }
+  }
+
+  return errors;
+}
+
+function requireField(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return [];
+  if (!el.value.trim()) {
+    markError(id, msg);
+    return [msg];
+  }
+  return [];
+}
+
+function markError(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const field = el.closest('.field');
+  if (field) {
+    field.classList.add('field-error');
+    appendErrorMsg(id, msg);
+  } else {
+    el.style.borderColor = 'var(--red)';
+    el.style.boxShadow = '0 0 0 3px rgba(255,95,126,0.18)';
+  }
+}
+
+function appendErrorMsg(id, msg) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  // Remove existing error message
+  const existing = el.parentElement.querySelector('.field-error-msg');
+  if (existing) existing.remove();
+  const msgEl = document.createElement('div');
+  msgEl.className = 'field-error-msg';
+  msgEl.innerHTML = `⚠ ${msg}`;
+  el.parentElement.appendChild(msgEl);
+}
+
+function clearAllErrors() {
+  document.querySelectorAll('.field-error').forEach(f => f.classList.remove('field-error'));
+  document.querySelectorAll('.field-error-msg').forEach(m => m.remove());
+  document.querySelectorAll('.add-btn-error').forEach(b => b.classList.remove('add-btn-error'));
+  const banner = document.getElementById('validation-banner');
+  if (banner) { banner.classList.remove('show'); banner.innerHTML = ''; }
+}
+
+function showValidationBanner(errors) {
+  let banner = document.getElementById('validation-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'validation-banner';
+    banner.className = 'validation-banner';
+    // Insert before the ATS score bar
+    const atsBar = document.querySelector('.ats-bar-wrap');
+    atsBar.parentElement.insertBefore(banner, atsBar);
+  }
+  banner.innerHTML = `
+    <div class="vb-title">⚠ Please fill in the required fields:</div>
+    <ul class="vb-list">${errors.map(e => `<li>${e}</li>`).join('')}</ul>
+  `;
+  banner.classList.add('show');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function highlightAddBtn(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (!section) return;
+  const btn = section.querySelector('.btn-add-entry');
+  if (btn) {
+    btn.style.borderColor = 'var(--red)';
+    btn.style.color = 'var(--red)';
+    btn.style.animation = 'shake 0.35s ease';
+    setTimeout(() => {
+      btn.style.borderColor = '';
+      btn.style.color = '';
+      btn.style.animation = '';
+    }, 2000);
+  }
+}
+
+function renderExperienceListWithErrors() {
+  // Re-render and then mark errors
+  renderExperienceList();
+  experiences.forEach((exp, i) => {
+    const cards = document.querySelectorAll('#exp-list .entry-card');
+    const card = cards[i];
+    if (!card) return;
+    if (!exp.title.trim()) {
+      const input = card.querySelectorAll('input')[0];
+      if (input) { input.style.borderColor='var(--red)'; input.style.boxShadow='0 0 0 3px rgba(255,95,126,0.18)'; }
+    }
+    if (!exp.company.trim()) {
+      const input = card.querySelectorAll('input')[1];
+      if (input) { input.style.borderColor='var(--red)'; input.style.boxShadow='0 0 0 3px rgba(255,95,126,0.18)'; }
+    }
+    if (!exp.startDate.trim()) {
+      const input = card.querySelectorAll('input')[2];
+      if (input) { input.style.borderColor='var(--red)'; input.style.boxShadow='0 0 0 3px rgba(255,95,126,0.18)'; }
+    }
+    if (!exp.bullets.trim()) {
+      const ta = card.querySelector('textarea');
+      if (ta) { ta.style.borderColor='var(--red)'; ta.style.boxShadow='0 0 0 3px rgba(255,95,126,0.18)'; }
+    }
+  });
+}
+
+function renderProjectListWithErrors() {
+  renderProjectList();
+  projects.forEach((p, i) => {
+    const cards = document.querySelectorAll('#proj-list .entry-card');
+    const card = cards[i];
+    if (!card) return;
+    if (!p.name.trim()) {
+      const input = card.querySelectorAll('input')[0];
+      if (input) { input.style.borderColor='var(--red)'; input.style.boxShadow='0 0 0 3px rgba(255,95,126,0.18)'; }
+    }
+    if (!p.tech.trim()) {
+      const input = card.querySelectorAll('input')[1];
+      if (input) { input.style.borderColor='var(--red)'; input.style.boxShadow='0 0 0 3px rgba(255,95,126,0.18)'; }
+    }
+    if (!p.desc.trim()) {
+      const ta = card.querySelector('textarea');
+      if (ta) { ta.style.borderColor='var(--red)'; ta.style.boxShadow='0 0 0 3px rgba(255,95,126,0.18)'; }
+    }
+  });
 }
 
 document.getElementById('step-tabs').addEventListener('click', (e) => {
@@ -1076,6 +1359,30 @@ function esc(s) {
 setProfileType('fresher'); // Default: fresher
 updatePreview();
 document.getElementById('btn-prev').style.opacity = '0.4';
+
+// Clear error when user starts typing in any input/textarea
+function clearErr(el) {
+  const field = el.closest('.field');
+  if (field) {
+    field.classList.remove('field-error');
+    const msg = field.querySelector('.field-error-msg');
+    if (msg) msg.remove();
+  }
+  el.style.borderColor = '';
+  el.style.boxShadow = '';
+  // Also hide banner
+  const banner = document.getElementById('validation-banner');
+  if (banner) banner.classList.remove('show');
+}
+
+// Mark required labels on summary when profile type changes
+const _origSetProfileType = setProfileType;
+setProfileType = function(type) {
+  _origSetProfileType(type);
+  const lbl = document.getElementById('summary-label');
+  if (lbl) lbl.innerHTML = (type === 'fresher' ? 'Career Objective' : 'Professional Summary') + ' <span class="req-star">*</span>';
+};
+setProfileType('fresher');
 
 /* ============================================================
    POPULATE DATALISTS
