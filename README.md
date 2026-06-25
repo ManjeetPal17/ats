@@ -40,9 +40,10 @@ npx serve .
 
 ## 👤 Author
 
-**Nandini CN**  
-📧 nandini.cn@email.com
+**Nandini C N**  
+📧 cnnandini09@gmail.com
 
 ---
 
 [🦸 Built for Digital Heroes](https://digitalheroesco.com)
+"# Resume" 
