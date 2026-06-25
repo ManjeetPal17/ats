@@ -1,4 +1,4 @@
-# ATS Resume Builder — ResumeCraft
+# ATS Resume Builder — ResumeGenius
 
 **Live URL:** _Your Vercel URL after deployment_
 
